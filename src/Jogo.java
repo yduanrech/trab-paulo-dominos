@@ -37,13 +37,18 @@ public class Jogo {
     public void iniciarPartida() {
         while (controle.isPartidaEmAndamento()) {
             System.out.println("\nVez do jogador: " + controle.getJogadorAtual().getNome());
-            controle.getJogadorAtual().jogar(tabuleiro);
+            printPedrasJogador(controle.getJogadorAtual()); // Temporário para diagnóstico
+            controle.executarJogada(tabuleiro);
             tabuleiro.printTabuleiro();
-            if (!controle.isPartidaEmAndamento()) {
-                break;
-            }
-            controle.alternarJogadorDaVez();
         }
         System.out.println("Fim do jogo!");
+    }
+
+    private void printPedrasJogador(Jogador jogador) {
+        System.out.println("Pedras de " + jogador.getNome() + ": ");
+        for (Pedra pedra : jogador.getPedras()) {
+            System.out.print(pedra.getNome() + " ");
+        }
+        System.out.println();
     }
 }

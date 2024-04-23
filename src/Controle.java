@@ -8,14 +8,20 @@ public class Controle {
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
         this.jogadorAtual = jogador1; // Por padrão, começamos com o jogador1
+        this.partidaEmAndamento = true;
     }
 
-    public void alternarJogadorDaVez() {
+    public void executarJogada(Tabuleiro tabuleiro) {
+        jogadorAtual.jogar(tabuleiro);
         if (jogadorAtual.getPedras().isEmpty()) {
             System.out.println(jogadorAtual.getNome() + " ganhou o jogo!");
             setPartidaEmAndamento(false);
-            return;
+        } else {
+            alternarJogadorDaVez();
         }
+    }
+
+    public void alternarJogadorDaVez() {
         jogadorAtual = (jogadorAtual == jogador1) ? jogador2 : jogador1;
     }
 
