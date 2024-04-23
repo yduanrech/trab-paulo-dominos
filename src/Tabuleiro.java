@@ -52,10 +52,12 @@ public class Tabuleiro {
     }
 
     public void printTabuleiro() {
-        System.out.print("Tabuleiro atual: ");
+        System.out.println("\n--------------------");
+        System.out.println("Tabuleiro atual: ");
         for (Pedra pedra : pedrasTabuleiro) {
             System.out.print(pedra.getNome() + " ");
         }
         System.out.println();
+        System.out.println("--------------------\n");
     }
 }
