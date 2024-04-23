@@ -7,7 +7,7 @@ public class Tabuleiro {
     private int ladoDireitoTabuleiro;
 
     public Tabuleiro() {
-        ladoEsquerdoTabuleiro = -1;
+        ladoEsquerdoTabuleiro = -1; // Inicialmente não há pedras no tabuleiro
         ladoDireitoTabuleiro = -1;
     }
 
@@ -22,8 +22,7 @@ public class Tabuleiro {
             pedrasTabuleiro.add(0, pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
             return true;
-        }
-        if (pedra.getNumEsquerdo() == ladoEsquerdoTabuleiro) {
+        } else if (pedra.getNumEsquerdo() == ladoEsquerdoTabuleiro) {
             pedra.inverterLados();
             pedrasTabuleiro.add(0, pedra);
             ladoEsquerdoTabuleiro = pedra.getNumDireito();
@@ -43,8 +42,7 @@ public class Tabuleiro {
             pedrasTabuleiro.add(pedra);
             ladoDireitoTabuleiro = pedra.getNumDireito();
             return true;
-        }
-        if (pedra.getNumDireito() == ladoDireitoTabuleiro) {
+        } else if (pedra.getNumDireito() == ladoDireitoTabuleiro) {
             pedra.inverterLados();
             pedrasTabuleiro.add(pedra);
             ladoDireitoTabuleiro = pedra.getNumEsquerdo();
