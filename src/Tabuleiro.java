@@ -7,56 +7,48 @@ public class Tabuleiro {
     private int ladoDireitoTabuleiro;
 
     public Tabuleiro() {
-        ladoEsquerdoTabuleiro = -1; // Inicialmente não há pedras no tabuleiro
+        ladoEsquerdoTabuleiro = -1;
         ladoDireitoTabuleiro = -1;
     }
 
     public boolean adicionarPedraEsquerda(Pedra pedra) {
-        // Se o tabuleiro estiver vazio, adiciona a pedra diretamente
         if (ladoEsquerdoTabuleiro == -1) {
-            pedrasTabuleiro.add(0, pedra); // Adiciona no começo da lista
+            pedrasTabuleiro.add(0, pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
             ladoDireitoTabuleiro = pedra.getNumDireito();
             return true;
-        } else {
-            // Tentar encaixar sem girar
-            if (pedra.getNumDireito() == ladoEsquerdoTabuleiro) {
-                pedrasTabuleiro.add(0, pedra);
-                ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
-                return true;
-            }
-            // Tentar girar a pedra para encaixar
-            else if (pedra.getNumEsquerdo() == ladoEsquerdoTabuleiro) {
-                pedra.inverterLados();
-                pedrasTabuleiro.add(0, pedra);
-                ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
-                return true;
-            }
+        }
+        if (pedra.getNumDireito() == ladoEsquerdoTabuleiro) {
+            pedrasTabuleiro.add(0, pedra);
+            ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
+            return true;
+        }
+        if (pedra.getNumEsquerdo() == ladoEsquerdoTabuleiro) {
+            pedra.inverterLados();
+            pedrasTabuleiro.add(0, pedra);
+            ladoEsquerdoTabuleiro = pedra.getNumDireito();
+            return true;
         }
         return false;
     }
 
     public boolean adicionarPedraDireita(Pedra pedra) {
-        // Se o tabuleiro estiver vazio, adiciona a pedra diretamente
         if (ladoDireitoTabuleiro == -1) {
-            pedrasTabuleiro.add(pedra); // Adiciona no final da lista
+            pedrasTabuleiro.add(pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
             ladoDireitoTabuleiro = pedra.getNumDireito();
             return true;
-        } else {
-            // Tentar encaixar sem girar
-            if (pedra.getNumEsquerdo() == ladoDireitoTabuleiro) {
-                pedrasTabuleiro.add(pedra);
-                ladoDireitoTabuleiro = pedra.getNumDireito();
-                return true;
-            }
-            // Tentar girar a pedra para encaixar
-            else if (pedra.getNumDireito() == ladoDireitoTabuleiro) {
-                pedra.inverterLados();
-                pedrasTabuleiro.add(pedra);
-                ladoDireitoTabuleiro = pedra.getNumDireito();
-                return true;
-            }
+        }
+        if (pedra.getNumEsquerdo() == ladoDireitoTabuleiro) {
+            pedrasTabuleiro.add(pedra);
+            ladoDireitoTabuleiro = pedra.getNumDireito();
+            return true;
+        }
+        if (pedra.getNumDireito() == ladoDireitoTabuleiro) {
+            pedra.inverterLados();
+            pedrasTabuleiro.add(pedra);
+            ladoDireitoTabuleiro = pedra.getNumEsquerdo();
+            return true;
         }
         return false;
     }
