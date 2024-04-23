@@ -3,10 +3,10 @@ public class Pedra {
     private int numEsquerdo;
     private int numDireito;
 
-    public Pedra(String nome, int numEsquerdo, int numDireito) {
-        this.nome = nome;
+    public Pedra(int numEsquerdo, int numDireito) {
         this.numEsquerdo = numEsquerdo;
         this.numDireito = numDireito;
+        updateName();  // Atualiza o nome inicial baseado nos lados fornecidos
     }
 
     public String getNome() {
@@ -21,13 +21,14 @@ public class Pedra {
         return numDireito;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void inverterLados() {
         int temp = numEsquerdo;
         numEsquerdo = numDireito;
         numDireito = temp;
+        updateName();  // Atualiza o nome sempre que os lados são invertidos
+    }
+
+    private void updateName() {
+        this.nome = "[" + numEsquerdo + "|" + numDireito + "]";
     }
 }

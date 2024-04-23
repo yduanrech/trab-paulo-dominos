@@ -57,5 +57,5 @@ public class Tabuleiro {
             System.out.print(pedra.getNome() + " ");
         }
         System.out.println();
-    }
+    }    
 }

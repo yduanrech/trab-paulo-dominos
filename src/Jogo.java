@@ -22,7 +22,7 @@ public class Jogo {
         int index = 0;
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
-                pedras.add(new Pedra("[" + i + "|" + j + "]", i, j));
+                pedras.add(new Pedra(i, j));
             }
         }
         Collections.shuffle(pedras);
