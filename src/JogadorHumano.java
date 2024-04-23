@@ -6,9 +6,11 @@ public class JogadorHumano implements Jogador {
     private String nome;
     private List<Pedra> pedras = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
+    private List<Pedra> pedrasDisponiveisParaCompra; // Referência às pedras disponíveis para compra.
 
-    public JogadorHumano(String nome) {
+    public JogadorHumano(String nome, List<Pedra> pedrasDisponiveisParaCompra) {
         this.nome = nome;
+        this.pedrasDisponiveisParaCompra = pedrasDisponiveisParaCompra;
     }
 
     @Override
@@ -17,21 +19,37 @@ public class JogadorHumano implements Jogador {
         for (int i = 0; i < pedras.size(); i++) {
             System.out.println((i + 1) + " - " + pedras.get(i).getNome());
         }
-        System.out.println((pedras.size() + 1) + " - Passar a vez");
+        System.out.println((pedras.size() + 1) + " - Comprar pedra");
+        System.out.println((pedras.size() + 2) + " - Passar a vez");
+
         int choice = scanner.nextInt();
-        if (choice <= pedras.size()) {
-            Pedra p = pedras.get(choice - 1);
-            System.out.println("Escolha um lado (1 - Esquerdo, 2 - Direito):");
-            int lado = scanner.nextInt();
-            boolean result = (lado == 1) ? tabuleiro.adicionarPedraEsquerda(p) : tabuleiro.adicionarPedraDireita(p);
-            if (result) {
-                pedras.remove(p);
-                System.out.println("Pedra jogada: " + p.getNome());
+        if (choice == pedras.size() + 1) {
+            if (!pedrasDisponiveisParaCompra.isEmpty()) {
+                Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
+                pedras.add(comprada);
+                System.out.println("Pedra comprada: " + comprada.getNome());
+                // Tentativa de jogar a pedra imediatamente após comprar
+                jogarPedra(comprada, tabuleiro);
             } else {
-                System.out.println("Não foi possível jogar a pedra.");
+                System.out.println("Não há pedras disponíveis para comprar.");
             }
-        } else {
+        } else if (choice == pedras.size() + 2) {
             System.out.println("Passou a vez.");
+        } else if (choice > 0 && choice <= pedras.size()) {
+            Pedra pedra = pedras.get(choice - 1);
+            jogarPedra(pedra, tabuleiro);
+        }
+    }
+
+    private void jogarPedra(Pedra pedra, Tabuleiro tabuleiro) {
+        System.out.println("Escolha um lado (1 - Esquerdo, 2 - Direito):");
+        int lado = scanner.nextInt();
+        boolean result = (lado == 1) ? tabuleiro.adicionarPedraEsquerda(pedra) : tabuleiro.adicionarPedraDireita(pedra);
+        if (result) {
+            pedras.remove(pedra);
+            System.out.println("Pedra jogada: " + pedra.getNome());
+        } else {
+            System.out.println("Não foi possível jogar a pedra.");
         }
     }
 
