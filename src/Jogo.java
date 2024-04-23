@@ -19,7 +19,6 @@ public class Jogo {
     }
 
     private void inicializarPedras() {
-        int index = 0;
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
                 pedras.add(new Pedra(i, j));
@@ -40,9 +39,11 @@ public class Jogo {
             System.out.println("\nVez do jogador: " + controle.getJogadorAtual().getNome());
             controle.getJogadorAtual().jogar(tabuleiro);
             tabuleiro.printTabuleiro();
+            if (!controle.isPartidaEmAndamento()) {
+                break;
+            }
             controle.alternarJogadorDaVez();
         }
         System.out.println("Fim do jogo!");
     }
 }
-

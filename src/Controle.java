@@ -11,6 +11,11 @@ public class Controle {
     }
 
     public void alternarJogadorDaVez() {
+        if (jogadorAtual.getPedras().isEmpty()) {
+            System.out.println(jogadorAtual.getNome() + " ganhou o jogo!");
+            setPartidaEmAndamento(false);
+            return;
+        }
         jogadorAtual = (jogadorAtual == jogador1) ? jogador2 : jogador1;
     }
 
