@@ -1,3 +1,9 @@
+package game;
+
+import players.Jogador;
+import players.JogadorHumano;
+import players.JogadorIA;
+
 public class Controle {
     private Jogador jogadorAtual;
     private Jogador jogador1;

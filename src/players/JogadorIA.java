@@ -1,5 +1,9 @@
+package players;
 import java.util.ArrayList;
 import java.util.List;
+
+import game.Pedra;
+import game.Tabuleiro;
 
 public class JogadorIA implements Jogador {
     private String nome;
@@ -25,7 +29,8 @@ public class JogadorIA implements Jogador {
             Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
             pedras.add(comprada);
             //System.out.println("IA comprou: " + comprada.getNome());
-            System.out.println("IA comprou um pedra!");
+            System.out.println("IA comprou uma pedra!");
+            System.out.println("IA jogou " + comprada.getNome());
             // Tenta jogar a pedra comprada imediatamente
             if (!(tabuleiro.adicionarPedraEsquerda(comprada) || tabuleiro.adicionarPedraDireita(comprada))) {
                 System.out.println("IA não conseguiu jogar a pedra comprada.");

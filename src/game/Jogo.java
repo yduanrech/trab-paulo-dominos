@@ -1,5 +1,12 @@
+package game;
+
 import java.util.Collections;
 import java.util.List;
+
+import players.Jogador;
+import players.JogadorHumano;
+import players.JogadorIA;
+
 import java.util.ArrayList;
 
 public class Jogo {
@@ -48,7 +55,7 @@ public class Jogo {
             controle.executarJogada(tabuleiro);
             tabuleiro.printTabuleiro();
         }
-        System.out.println("Fim do jogo!");
+        System.out.println("\nFim do jogo!");
     }
 
     private void printPedrasJogador(Jogador jogador) {

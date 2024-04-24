@@ -1,6 +1,11 @@
+package players;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import game.Pedra;
+import game.Tabuleiro;
 
 public class JogadorHumano implements Jogador {
     private String nome;
@@ -24,7 +29,7 @@ public class JogadorHumano implements Jogador {
         System.out.println((pedras.size() + 2) + " - Passar a vez");
         System.out.println((pedras.size() + 3) + " - Desistir");
         System.out.println();
-        System.out.println("Escolha uma opção ou uma pedra: ");
+        System.out.print("Escolha uma opção ou uma pedra: ");
         
         int opcao = scanner.nextInt();
         if (opcao == pedras.size() + 1) {
@@ -49,7 +54,7 @@ public class JogadorHumano implements Jogador {
     }
 
     private void jogarPedra(Pedra pedra, Tabuleiro tabuleiro) {
-        System.out.println("Escolha um lado (1 - Esquerdo, 2 - Direito):");
+        System.out.print("Escolha um lado (1 - Esquerdo, 2 - Direito): ");
         int lado = scanner.nextInt();
         boolean result = (lado == 1) ? tabuleiro.adicionarPedraEsquerda(pedra) : tabuleiro.adicionarPedraDireita(pedra);
         if (result) {

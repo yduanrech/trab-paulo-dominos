@@ -1,3 +1,5 @@
+package game;
+
 public class Pedra {
     private String nome;
     private int numEsquerdo;
