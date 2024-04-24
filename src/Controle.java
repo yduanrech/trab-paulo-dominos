@@ -14,7 +14,8 @@ public class Controle {
     public void executarJogada(Tabuleiro tabuleiro) {
         jogadorAtual.jogar(tabuleiro);
         if (jogadorAtual.getPedras().isEmpty()) {
-            System.out.println(jogadorAtual.getNome() + " ganhou o jogo!");
+            System.out.println();
+            System.out.println(jogadorAtual.getNome() + " ganhou o jogo!!!");
             setPartidaEmAndamento(false);
         } else {
             alternarJogadorDaVez();

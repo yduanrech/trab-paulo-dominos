@@ -22,14 +22,12 @@ public class JogadorHumano implements Jogador {
         System.out.println();
         System.out.println((pedras.size() + 1) + " - Comprar pedra");
         System.out.println((pedras.size() + 2) + " - Passar a vez");
+        System.out.println((pedras.size() + 3) + " - Desistir");
         System.out.println();
         System.out.println("Escolha uma opção ou uma pedra: ");
         
-        
-        
-
-        int choice = scanner.nextInt();
-        if (choice == pedras.size() + 1) {
+        int opcao = scanner.nextInt();
+        if (opcao == pedras.size() + 1) {
             if (!pedrasDisponiveisParaCompra.isEmpty()) {
                 Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
                 pedras.add(comprada);
@@ -39,12 +37,15 @@ public class JogadorHumano implements Jogador {
             } else {
                 System.out.println("Não há pedras disponíveis para comprar.");
             }
-        } else if (choice == pedras.size() + 2) {
+        } else if (opcao == pedras.size() + 2) {
             System.out.println("Passou a vez.");
-        } else if (choice > 0 && choice <= pedras.size()) {
-            Pedra pedra = pedras.get(choice - 1);
+        } else if (opcao == pedras.size() + 3) {
+            System.out.println("\nJogo encerrado.");
+            System.exit(0);
+        } else if (opcao > 0 && opcao <= pedras.size()) {
+            Pedra pedra = pedras.get(opcao - 1);
             jogarPedra(pedra, tabuleiro);
-        }
+        } 
     }
 
     private void jogarPedra(Pedra pedra, Tabuleiro tabuleiro) {

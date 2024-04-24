@@ -53,7 +53,7 @@ public class Tabuleiro {
 
     public void printTabuleiro() {
         System.out.println();
-        for (int i = 0; i <= pedrasTabuleiro.size() * 8; i++) {
+        for (int i = 0; i <= pedrasTabuleiro.size() * 6; i++) {
              System.out.print("-");
         }
         System.out.println();
@@ -62,8 +62,9 @@ public class Tabuleiro {
             System.out.print(pedra.getNome() + " ");
         }
         System.out.println();
-        for (int i = 0; i <= pedrasTabuleiro.size() * 8; i++) {
+        for (int i = 0; i <= pedrasTabuleiro.size() * 6; i++) {
             System.out.print("-");
        }
+       System.out.println();
     }
 }
