@@ -7,7 +7,7 @@ public class JogadorIA implements Jogador {
     private List<Pedra> pedrasDisponiveisParaCompra; // Referência às pedras disponíveis para compra.
 
     public JogadorIA(List<Pedra> pedrasDisponiveisParaCompra) {
-        this.nome = "Computador";
+        this.nome = "Inteligência Artificial";
         this.pedrasDisponiveisParaCompra = pedrasDisponiveisParaCompra;
     }
 
@@ -24,7 +24,8 @@ public class JogadorIA implements Jogador {
         if (!pedrasDisponiveisParaCompra.isEmpty()) {
             Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
             pedras.add(comprada);
-            System.out.println("IA comprou: " + comprada.getNome());
+            //System.out.println("IA comprou: " + comprada.getNome());
+            System.out.println("IA comprou um pedra!");
             // Tenta jogar a pedra comprada imediatamente
             if (!(tabuleiro.adicionarPedraEsquerda(comprada) || tabuleiro.adicionarPedraDireita(comprada))) {
                 System.out.println("IA não conseguiu jogar a pedra comprada.");

@@ -58,6 +58,6 @@ public class Tabuleiro {
             System.out.print(pedra.getNome() + " ");
         }
         System.out.println();
-        System.out.println("--------------------\n");
+        System.out.println("--------------------");
     }
 }

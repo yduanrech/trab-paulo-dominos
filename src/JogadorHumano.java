@@ -15,7 +15,7 @@ public class JogadorHumano implements Jogador {
 
     @Override
     public void jogar(Tabuleiro tabuleiro) {
-        System.out.println("\nSuas pedras:");
+        System.out.println("Suas pedras:");
         for (int i = 0; i < pedras.size(); i++) {
             System.out.println((i + 1) + " - " + pedras.get(i).getNome());
         }

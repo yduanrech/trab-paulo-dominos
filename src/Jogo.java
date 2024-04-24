@@ -50,9 +50,9 @@ public class Jogo {
     public void iniciarPartida() {
         while (controle.isPartidaEmAndamento()) {
             System.out.println("\n ===== Vez do jogador: " + controle.getJogadorAtual().getNome() + " =====\n");
-            if (controle.getJogadorAtual().getNome() == "Jogador") {
+            /*if (controle.getJogadorAtual().getNome() == "Jogador") {
                 printPedrasJogador(controle.getJogadorAtual());
-            }
+            }*/
             //printPedrasJogador(controle.getJogadorAtual());
             controle.executarJogada(tabuleiro);
             tabuleiro.printTabuleiro();
