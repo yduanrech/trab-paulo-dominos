@@ -15,12 +15,18 @@ public class JogadorHumano implements Jogador {
 
     @Override
     public void jogar(Tabuleiro tabuleiro) {
-        System.out.println("\nEscolha uma peça para jogar ou uma ação:");
+        System.out.println("\nSuas pedras:");
         for (int i = 0; i < pedras.size(); i++) {
             System.out.println((i + 1) + " - " + pedras.get(i).getNome());
         }
+        System.out.println();
         System.out.println((pedras.size() + 1) + " - Comprar pedra");
         System.out.println((pedras.size() + 2) + " - Passar a vez");
+        System.out.println();
+        System.out.println("Escolha uma opção ou uma pedra: ");
+        
+        
+        
 
         int choice = scanner.nextInt();
         if (choice == pedras.size() + 1) {

@@ -11,7 +11,7 @@ public class Jogo {
     private Controle controle;
 
     public Jogo() {
-        jogadorHumano = new JogadorHumano("Jogador 1", pedrasDisponiveisParaCompra);
+        jogadorHumano = new JogadorHumano("Jogador", pedrasDisponiveisParaCompra);
         jogadorIA = new JogadorIA(pedrasDisponiveisParaCompra);
         controle = new Controle(jogadorHumano, jogadorIA);
         inicializarPedras();
@@ -29,10 +29,12 @@ public class Jogo {
     }
 
     public void distribuirPedras() {
-        int numPedrasParaJogadores = 14;  // 7 pedras para cada jogador
-        if (pedras.size() < numPedrasParaJogadores) {
-            throw new IllegalStateException("Not enough pedras to distribute.");
-        }
+        int numPedrasParaJogadores = 14; // 7 pedras para cada jogador
+        /*
+         * if (pedras.size() < numPedrasParaJogadores) {
+         * throw new IllegalStateException("Sem pedras o s.");
+         * }
+         */
 
         for (int i = 0; i < numPedrasParaJogadores; i++) {
             if (i % 2 == 0) {
@@ -47,8 +49,11 @@ public class Jogo {
 
     public void iniciarPartida() {
         while (controle.isPartidaEmAndamento()) {
-            System.out.println("\nVez do jogador: " + controle.getJogadorAtual().getNome());
-            printPedrasJogador(controle.getJogadorAtual());
+            System.out.println("\n ===== Vez do jogador: " + controle.getJogadorAtual().getNome() + " =====\n");
+            if (controle.getJogadorAtual().getNome() == "Jogador") {
+                printPedrasJogador(controle.getJogadorAtual());
+            }
+            //printPedrasJogador(controle.getJogadorAtual());
             controle.executarJogada(tabuleiro);
             tabuleiro.printTabuleiro();
         }
