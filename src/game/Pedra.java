@@ -4,10 +4,12 @@ public class Pedra {
     private String nome;
     private int numEsquerdo;
     private int numDireito;
+    private int pontos;
 
     public Pedra(int numEsquerdo, int numDireito) {
         this.numEsquerdo = numEsquerdo;
         this.numDireito = numDireito;
+        this.pontos = numEsquerdo + numDireito;
         atualizarNome(); //Atualiza o nome inicial baseado nos lados fornecidos
     }
 
