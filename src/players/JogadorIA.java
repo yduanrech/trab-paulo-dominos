@@ -8,7 +8,7 @@ import game.Tabuleiro;
 public class JogadorIA implements Jogador {
     private String nome;
     private List<Pedra> pedras = new ArrayList<>();
-    private List<Pedra> pedrasDisponiveisParaCompra; // Referência às pedras disponíveis para compra.
+    private List<Pedra> pedrasDisponiveisParaCompra; 
 
     public JogadorIA(List<Pedra> pedrasDisponiveisParaCompra) {
         this.nome = "Inteligência Artificial";
@@ -24,16 +24,16 @@ public class JogadorIA implements Jogador {
                 return;
             }
         }
-        // Se não houver jogada possível, compra uma pedra
+        //Se não houver jogada possível, compra uma pedra
         if (!pedrasDisponiveisParaCompra.isEmpty()) {
             Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
             pedras.add(comprada);
             //System.out.println("IA comprou: " + comprada.getNome());
             System.out.println("IA comprou uma pedra!");
-            System.out.println("IA jogou " + comprada.getNome());
-            // Tenta jogar a pedra comprada imediatamente
             if (!(tabuleiro.adicionarPedraEsquerda(comprada) || tabuleiro.adicionarPedraDireita(comprada))) {
                 System.out.println("IA não conseguiu jogar a pedra comprada.");
+            } else {
+                System.out.println("IA jogou " + comprada.getNome());
             }
         } else {
             System.out.println("IA passou a vez.");

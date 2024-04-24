@@ -18,6 +18,7 @@ public class Jogo {
     private Controle controle;
 
     public Jogo() {
+        //Instância dos jogadores
         jogadorHumano = new JogadorHumano("Jogador", pedrasDisponiveisParaCompra);
         jogadorIA = new JogadorIA(pedrasDisponiveisParaCompra);
         controle = new Controle(jogadorHumano, jogadorIA);
@@ -26,6 +27,7 @@ public class Jogo {
         controle.setPartidaEmAndamento(true);
     }
 
+    //Gera as peças para o jogo e embaralha a ordem delas depois
     private void inicializarPedras() {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
@@ -36,7 +38,7 @@ public class Jogo {
     }
 
     public void distribuirPedras() {
-        int numPedrasParaJogadores = 14; // 7 pedras para cada jogador
+        int numPedrasParaJogadores = 14; //7 pedras para cada jogador
 
         for (int i = 0; i < numPedrasParaJogadores; i++) {
             if (i % 2 == 0) {
@@ -45,6 +47,7 @@ public class Jogo {
                 jogadorIA.receberPedra(pedras.remove(0));
             }
         }
+        //As pedras que sobraram vão para a lista de pedras para compra
         pedrasDisponiveisParaCompra.addAll(pedras);
         pedras.clear();
     }
@@ -65,5 +68,4 @@ public class Jogo {
         }
         System.out.println();
     }
-
 }

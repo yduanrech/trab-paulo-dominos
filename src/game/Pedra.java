@@ -8,7 +8,7 @@ public class Pedra {
     public Pedra(int numEsquerdo, int numDireito) {
         this.numEsquerdo = numEsquerdo;
         this.numDireito = numDireito;
-        updateName();  // Atualiza o nome inicial baseado nos lados fornecidos
+        atualizarNome(); //Atualiza o nome inicial baseado nos lados fornecidos
     }
 
     public String getNome() {
@@ -24,13 +24,13 @@ public class Pedra {
     }
 
     public void inverterLados() {
-        int temp = numEsquerdo;
+        int numTemp = numEsquerdo;
         numEsquerdo = numDireito;
-        numDireito = temp;
-        updateName();  // Atualiza o nome sempre que os lados são invertidos
+        numDireito = numTemp;
+        atualizarNome(); //Atualiza o nome sempre que os lados são invertidos
     }
 
-    private void updateName() {
+    private void atualizarNome() {
         this.nome = "[" + numEsquerdo + "|" + numDireito + "]";
     }
 }

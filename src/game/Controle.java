@@ -13,7 +13,7 @@ public class Controle {
     public Controle(Jogador jogador1, Jogador jogador2) {
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
-        this.jogadorAtual = jogador1; // Por padrão, começamos com o jogador1
+        this.jogadorAtual = jogador1; //Por padrão, começamos com o jogador1
         this.partidaEmAndamento = true;
     }
 
@@ -29,6 +29,7 @@ public class Controle {
     }
 
     public void alternarJogadorDaVez() {
+        //Troca os jogadores (se jogadorAtual for jogador1, troque para o jogador2, senão, receba jogador1)
         jogadorAtual = (jogadorAtual == jogador1) ? jogador2 : jogador1;
     }
 

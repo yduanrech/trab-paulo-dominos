@@ -11,7 +11,7 @@ public class JogadorHumano implements Jogador {
     private String nome;
     private List<Pedra> pedras = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
-    private List<Pedra> pedrasDisponiveisParaCompra; // Referência às pedras disponíveis para compra.
+    private List<Pedra> pedrasDisponiveisParaCompra; //Referência às pedras disponíveis para compra
 
     public JogadorHumano(String nome, List<Pedra> pedrasDisponiveisParaCompra) {
         this.nome = nome;
@@ -37,7 +37,7 @@ public class JogadorHumano implements Jogador {
                 Pedra comprada = pedrasDisponiveisParaCompra.remove(0);
                 pedras.add(comprada);
                 System.out.println("Pedra comprada: " + comprada.getNome());
-                // Tentativa de jogar a pedra imediatamente após comprar
+                //Tenta jogar a pedra imediatamente após comprar
                 jogarPedra(comprada, tabuleiro);
             } else {
                 System.out.println("Não há pedras disponíveis para comprar.");
