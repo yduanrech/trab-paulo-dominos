@@ -35,4 +35,10 @@ public class Pedra {
     private void atualizarNome() {
         this.nome = "[" + numEsquerdo + "|" + numDireito + "]";
     }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    
 }

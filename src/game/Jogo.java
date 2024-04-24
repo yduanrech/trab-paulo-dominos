@@ -55,7 +55,11 @@ public class Jogo {
     public void iniciarPartida() {
         while (controle.isPartidaEmAndamento()) {
             System.out.println("\n ===== Vez do jogador: " + controle.getJogadorAtual().getNome() + " =====\n");
+            printPedrasJogador(controle.getJogadorAtual());
+            System.out.println();
             controle.executarJogada(tabuleiro);
+           
+            
             tabuleiro.printTabuleiro();
         }
         System.out.println("\nFim do jogo!");

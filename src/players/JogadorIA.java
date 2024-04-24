@@ -17,13 +17,51 @@ public class JogadorIA implements Jogador {
 
     @Override
     public void jogar(Tabuleiro tabuleiro) {
+
+        int ladoEsquerdoTabuleiro = tabuleiro.getLadoEsquerdoTabuleiro();
+        int ladoDireitoTabuleiro = tabuleiro.getLadoDireitoTabuleiro();
+        List<Pedra> pedrasDisponiveis = new ArrayList<>();
+
         for (Pedra pedra : pedras) {
+           if (ladoEsquerdoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {
+                //System.out.println("Peça disponível: " + pedra.getNome());
+                pedrasDisponiveis.add(pedra);
+           } else if (ladoDireitoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {
+                //System.out.println("Peça disponível: " + pedra.getNome());
+                pedrasDisponiveis.add(pedra);
+           }
+        }
+
+        /*System.out.println("Pedras disponíveis: ");
+        for (Pedra pedra : pedrasDisponiveis) {
+            System.out.println(pedra.getNome());
+        }*/
+
+        int maiorPonto = 0;
+        Pedra pedraMaior = null;
+        for (Pedra pedra : pedrasDisponiveis) {
+            if (pedra.getPontos() > maiorPonto) {
+                maiorPonto = pedra.getPontos();
+                pedraMaior = pedra;
+            }
+        }   
+        
+        //System.out.println("Pedra maior: " + pedraMaior.getNome());
+
+        if (tabuleiro.adicionarPedraEsquerda(pedraMaior) || tabuleiro.adicionarPedraDireita(pedraMaior)) {
+            System.out.println("IA jogou " + pedraMaior.getNome());
+            pedras.remove(pedraMaior);
+            return;
+        }
+
+        /*for (Pedra pedra : pedras) {
             if (tabuleiro.adicionarPedraEsquerda(pedra) || tabuleiro.adicionarPedraDireita(pedra)) {
                 System.out.println("IA jogou " + pedra.getNome());
                 pedras.remove(pedra);
                 return;
             }
-        }
+        }*/
+
         //Se não houver jogada possível, compra uma pedra
         if (!pedrasDisponiveisParaCompra.isEmpty()) {
             Pedra comprada = pedrasDisponiveisParaCompra.remove(0);

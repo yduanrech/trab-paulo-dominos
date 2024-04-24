@@ -71,4 +71,22 @@ public class Tabuleiro {
        }
        System.out.println();
     }
+
+     //Getters e setters
+
+    public int getLadoEsquerdoTabuleiro() {
+        return ladoEsquerdoTabuleiro;
+    }
+
+    public void setLadoEsquerdoTabuleiro(int ladoEsquerdoTabuleiro) {
+        this.ladoEsquerdoTabuleiro = ladoEsquerdoTabuleiro;
+    }
+
+    public int getLadoDireitoTabuleiro() {
+        return ladoDireitoTabuleiro;
+    }
+
+    public void setLadoDireitoTabuleiro(int ladoDireitoTabuleiro) {
+        this.ladoDireitoTabuleiro = ladoDireitoTabuleiro;
+    }
 }
