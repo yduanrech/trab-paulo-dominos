@@ -32,10 +32,10 @@ public class JogadorIA implements Jogador {
            }
         }
 
-        /*System.out.println("Pedras disponíveis: ");
+        System.out.println("Pedras disponíveis: ");
         for (Pedra pedra : pedrasDisponiveis) {
             System.out.println(pedra.getNome());
-        }*/
+        }
 
         int maiorPonto = 0;
         Pedra pedraMaior = null;
@@ -45,14 +45,16 @@ public class JogadorIA implements Jogador {
                 pedraMaior = pedra;
             }
         }   
-        
-        //System.out.println("Pedra maior: " + pedraMaior.getNome());
+
+        //Arrumar quando não tiver pedra
+
+        System.out.println("Pedra maior: " + pedraMaior.getNome());
 
         if (tabuleiro.adicionarPedraEsquerda(pedraMaior) || tabuleiro.adicionarPedraDireita(pedraMaior)) {
             System.out.println("IA jogou " + pedraMaior.getNome());
             pedras.remove(pedraMaior);
             return;
-        }
+        } 
 
         /*for (Pedra pedra : pedras) {
             if (tabuleiro.adicionarPedraEsquerda(pedra) || tabuleiro.adicionarPedraDireita(pedra)) {
