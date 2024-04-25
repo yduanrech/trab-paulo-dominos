@@ -22,7 +22,6 @@ public class JogadorIA implements Jogador {
         int ladoDireitoTabuleiro = tabuleiro.getLadoDireitoTabuleiro();
         List<Pedra> pedrasDisponiveis = new ArrayList<>();
 
-        //conferir lógica
         for (Pedra pedra : pedras) {
             //Se o lado esquerdo do tabuleiro for igual ao número direito ou o número esquerdo da pedra salve a pedra
            if (ladoEsquerdoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {

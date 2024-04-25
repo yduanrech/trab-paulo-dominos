@@ -50,7 +50,9 @@ public class JogadorHumano implements Jogador {
         } else if (opcao > 0 && opcao <= pedras.size()) {
             Pedra pedra = pedras.get(opcao - 1);
             jogarPedra(pedra, tabuleiro);
-        } 
+        } else {
+            System.out.println("Opção inválida! Jogador perdeu sua vez...");
+        }
     }
 
     private void jogarPedra(Pedra pedra, Tabuleiro tabuleiro) {
