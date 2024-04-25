@@ -22,6 +22,7 @@ public class JogadorIA implements Jogador {
         int ladoDireitoTabuleiro = tabuleiro.getLadoDireitoTabuleiro();
         List<Pedra> pedrasDisponiveis = new ArrayList<>();
 
+        //conferir lógica
         for (Pedra pedra : pedras) {
            if (ladoEsquerdoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {
                 //System.out.println("Peça disponível: " + pedra.getNome());
@@ -32,30 +33,32 @@ public class JogadorIA implements Jogador {
            }
         }
 
-        System.out.println("Pedras disponíveis: ");
-        for (Pedra pedra : pedrasDisponiveis) {
-            System.out.println(pedra.getNome());
-        }
-
-        int maiorPonto = 0;
-        Pedra pedraMaior = null;
-        for (Pedra pedra : pedrasDisponiveis) {
-            if (pedra.getPontos() > maiorPonto) {
-                maiorPonto = pedra.getPontos();
-                pedraMaior = pedra;
+        if (pedrasDisponiveis.size() > 0){
+            System.out.println("Pedras disponíveis: ");
+            for (Pedra pedra : pedrasDisponiveis) {
+                System.out.println(pedra.getNome());
             }
-        }   
 
-        //Arrumar quando não tiver pedra
+            int maiorPonto = 0;
+            Pedra pedraMaior = null;
+            for (Pedra pedra : pedrasDisponiveis) {
+                if (pedra.getPontos() > maiorPonto) {
+                    maiorPonto = pedra.getPontos();
+                    pedraMaior = pedra;
+                }
+            }   
 
-        System.out.println("Pedra maior: " + pedraMaior.getNome());
+            System.out.println("Pedra maior: " + pedraMaior.getNome());
 
-        if (tabuleiro.adicionarPedraEsquerda(pedraMaior) || tabuleiro.adicionarPedraDireita(pedraMaior)) {
-            System.out.println("IA jogou " + pedraMaior.getNome());
-            pedras.remove(pedraMaior);
-            return;
-        } 
-
+            if (tabuleiro.adicionarPedraEsquerda(pedraMaior) || tabuleiro.adicionarPedraDireita(pedraMaior)) {
+                System.out.println("IA jogou " + pedraMaior.getNome());
+                pedras.remove(pedraMaior);
+                return;
+            } 
+        } else {
+            System.out.println("Sem pedras disponíveis");
+        }
+        
         /*for (Pedra pedra : pedras) {
             if (tabuleiro.adicionarPedraEsquerda(pedra) || tabuleiro.adicionarPedraDireita(pedra)) {
                 System.out.println("IA jogou " + pedra.getNome());
