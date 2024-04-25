@@ -61,7 +61,8 @@ public class JogadorHumano implements Jogador {
             pedras.remove(pedra);
             System.out.println("Pedra jogada: " + pedra.getNome());
         } else {
-            System.out.println("Não foi possível jogar a pedra.");
+            System.out.println("Não foi possível jogar a pedra. Jogador perdeu a sua vez...");
+            return;
         }
     }
 

@@ -24,22 +24,24 @@ public class JogadorIA implements Jogador {
 
         //conferir lógica
         for (Pedra pedra : pedras) {
+            //Se o lado esquerdo do tabuleiro for igual ao número direito ou o número esquerdo da pedra salve a pedra
            if (ladoEsquerdoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {
                 //System.out.println("Peça disponível: " + pedra.getNome());
                 pedrasDisponiveis.add(pedra);
-           } else if (ladoDireitoTabuleiro == pedra.getNumDireito() || ladoEsquerdoTabuleiro == pedra.getNumEsquerdo()) {
+           //Se o lado direito do tabuleiro for igual ao número direito ou o número esquerdo, salve a pedra     
+           } else if (ladoDireitoTabuleiro == pedra.getNumDireito() || ladoDireitoTabuleiro == pedra.getNumEsquerdo()) {
                 //System.out.println("Peça disponível: " + pedra.getNome());
                 pedrasDisponiveis.add(pedra);
            }
         }
 
         if (pedrasDisponiveis.size() > 0){
-            System.out.println("Pedras disponíveis: ");
+            /*System.out.println("Pedras disponíveis: ");
             for (Pedra pedra : pedrasDisponiveis) {
                 System.out.println(pedra.getNome());
-            }
+            }*/
 
-            int maiorPonto = 0;
+            int maiorPonto = -1;
             Pedra pedraMaior = null;
             for (Pedra pedra : pedrasDisponiveis) {
                 if (pedra.getPontos() > maiorPonto) {
@@ -48,7 +50,7 @@ public class JogadorIA implements Jogador {
                 }
             }   
 
-            System.out.println("Pedra maior: " + pedraMaior.getNome());
+            //System.out.println("Pedra maior: " + pedraMaior.getNome());
 
             if (tabuleiro.adicionarPedraEsquerda(pedraMaior) || tabuleiro.adicionarPedraDireita(pedraMaior)) {
                 System.out.println("IA jogou " + pedraMaior.getNome());
