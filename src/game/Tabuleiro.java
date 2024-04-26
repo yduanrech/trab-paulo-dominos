@@ -1,3 +1,5 @@
+package game;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,22 +9,23 @@ public class Tabuleiro {
     private int ladoDireitoTabuleiro;
 
     public Tabuleiro() {
-        ladoEsquerdoTabuleiro = -1;  // Inicializa sem pedras no tabuleiro
-        ladoDireitoTabuleiro = -1;  // Inicializa sem pedras no tabuleiro
+        //Inicializa sem pedras no tabuleiro
+        ladoEsquerdoTabuleiro = -1;  
+        ladoDireitoTabuleiro = -1;  
     }
 
     public boolean adicionarPedraEsquerda(Pedra pedra) {
-        if (ladoEsquerdoTabuleiro == -1) {  // Se o tabuleiro está vazio
+        if (ladoEsquerdoTabuleiro == -1) {  //Se o tabuleiro está vazio
             pedrasTabuleiro.add(0, pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
             ladoDireitoTabuleiro = pedra.getNumDireito();
             return true;
         }
-        // Se a pedra não encaixar diretamente, tenta girar
+        //Se a pedra não encaixar, tenta girar
         if (pedra.getNumDireito() != ladoEsquerdoTabuleiro && pedra.getNumEsquerdo() == ladoEsquerdoTabuleiro) {
             pedra.inverterLados();
         }
-        // Verifica novamente se agora encaixa
+        //Verifica novamente se agora encaixa
         if (pedra.getNumDireito() == ladoEsquerdoTabuleiro) {
             pedrasTabuleiro.add(0, pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
@@ -31,18 +34,19 @@ public class Tabuleiro {
         return false;
     }
 
+    //Mesma lógica para adicionar ao lado esquerdo, mas ao contrário
     public boolean adicionarPedraDireita(Pedra pedra) {
-        if (ladoDireitoTabuleiro == -1) {  // Se o tabuleiro está vazio
+        if (ladoDireitoTabuleiro == -1) {  
             pedrasTabuleiro.add(pedra);
             ladoEsquerdoTabuleiro = pedra.getNumEsquerdo();
             ladoDireitoTabuleiro = pedra.getNumDireito();
             return true;
         }
-        // Se a pedra não encaixar diretamente, tenta girar
+
         if (pedra.getNumEsquerdo() != ladoDireitoTabuleiro && pedra.getNumDireito() == ladoDireitoTabuleiro) {
             pedra.inverterLados();
         }
-        // Verifica novamente se agora encaixa
+
         if (pedra.getNumEsquerdo() == ladoDireitoTabuleiro) {
             pedrasTabuleiro.add(pedra);
             ladoDireitoTabuleiro = pedra.getNumDireito();
@@ -52,12 +56,37 @@ public class Tabuleiro {
     }
 
     public void printTabuleiro() {
-        System.out.println("\n--------------------");
+        System.out.println();
+        for (int i = 0; i <= pedrasTabuleiro.size() * 6; i++) {
+             System.out.print("-");
+        }
+        System.out.println();
         System.out.println("Tabuleiro atual: ");
         for (Pedra pedra : pedrasTabuleiro) {
             System.out.print(pedra.getNome() + " ");
         }
         System.out.println();
-        System.out.println("--------------------\n");
+        for (int i = 0; i <= pedrasTabuleiro.size() * 6; i++) {
+            System.out.print("-");
+       }
+       System.out.println();
+    }
+
+     //Getters e setters
+
+    public int getLadoEsquerdoTabuleiro() {
+        return ladoEsquerdoTabuleiro;
+    }
+
+    public void setLadoEsquerdoTabuleiro(int ladoEsquerdoTabuleiro) {
+        this.ladoEsquerdoTabuleiro = ladoEsquerdoTabuleiro;
+    }
+
+    public int getLadoDireitoTabuleiro() {
+        return ladoDireitoTabuleiro;
+    }
+
+    public void setLadoDireitoTabuleiro(int ladoDireitoTabuleiro) {
+        this.ladoDireitoTabuleiro = ladoDireitoTabuleiro;
     }
 }

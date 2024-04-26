@@ -1,5 +1,12 @@
+package game;
+
 import java.util.Collections;
 import java.util.List;
+
+import players.Jogador;
+import players.JogadorHumano;
+import players.JogadorIA;
+
 import java.util.ArrayList;
 
 public class Jogo {
@@ -11,6 +18,7 @@ public class Jogo {
     private Controle controle;
 
     public Jogo() {
+        //Instância dos jogadores
         jogadorHumano = new JogadorHumano("Jogador", pedrasDisponiveisParaCompra);
         jogadorIA = new JogadorIA(pedrasDisponiveisParaCompra);
         controle = new Controle(jogadorHumano, jogadorIA);
@@ -19,6 +27,7 @@ public class Jogo {
         controle.setPartidaEmAndamento(true);
     }
 
+    //Gera as peças para o jogo e embaralha a ordem delas depois
     private void inicializarPedras() {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
@@ -29,12 +38,7 @@ public class Jogo {
     }
 
     public void distribuirPedras() {
-        int numPedrasParaJogadores = 14; // 7 pedras para cada jogador
-        /*
-         * if (pedras.size() < numPedrasParaJogadores) {
-         * throw new IllegalStateException("Sem pedras o s.");
-         * }
-         */
+        int numPedrasParaJogadores = 14; //7 pedras para cada jogador
 
         for (int i = 0; i < numPedrasParaJogadores; i++) {
             if (i % 2 == 0) {
@@ -43,6 +47,7 @@ public class Jogo {
                 jogadorIA.receberPedra(pedras.remove(0));
             }
         }
+        //As pedras que sobraram vão para a lista de pedras para compra
         pedrasDisponiveisParaCompra.addAll(pedras);
         pedras.clear();
     }
@@ -50,14 +55,13 @@ public class Jogo {
     public void iniciarPartida() {
         while (controle.isPartidaEmAndamento()) {
             System.out.println("\n ===== Vez do jogador: " + controle.getJogadorAtual().getNome() + " =====\n");
-            if (controle.getJogadorAtual().getNome() == "Jogador") {
-                printPedrasJogador(controle.getJogadorAtual());
-            }
             //printPedrasJogador(controle.getJogadorAtual());
+            //System.out.println();
             controle.executarJogada(tabuleiro);
             tabuleiro.printTabuleiro();
+            //System.out.println("Lado esquerdo: " + tabuleiro.getLadoEsquerdoTabuleiro() + " | Lado direito: " + tabuleiro.getLadoDireitoTabuleiro());
         }
-        System.out.println("Fim do jogo!");
+        System.out.println("\nFim do jogo!");
     }
 
     private void printPedrasJogador(Jogador jogador) {
