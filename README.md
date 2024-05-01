@@ -48,7 +48,7 @@ Em cada turno, o jogador deve colocar uma pedra em um dos extremos abertos do la
 Se o monte estiver vazio e o jogador não puder fazer uma jogada válida, ele passa a vez para o próximo jogador.
 
 **Final do Jogo:**
-O jogo termina quando um jogador coloca todas as suas pedras ou quando nenhum jogador pode realizar uma jogada válida. Nesse caso, o vencedor é determinado pelo jogador com o menor número total de pontos nas pedras que restaram.
+O jogo termina quando um jogador coloca todas as suas pedras ou quando nenhum jogador pode realizar uma jogada válida.
 
 ### FORMA DE JOGAR
 
