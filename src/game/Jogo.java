@@ -19,7 +19,7 @@ public class Jogo {
 
     public Jogo() {
         //Instância dos jogadores
-        jogadorHumano = new JogadorHumano("Jogador", pedrasDisponiveisParaCompra);
+        jogadorHumano = new JogadorHumano("Você", pedrasDisponiveisParaCompra);
         jogadorIA = new JogadorIA(pedrasDisponiveisParaCompra);
         controle = new Controle(jogadorHumano, jogadorIA);
         inicializarPedras();
